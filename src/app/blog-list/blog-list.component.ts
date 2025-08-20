@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { BlogPostTileComponent } from '../blog-post-tile/blog-post-tile.component';
 import { BlogPost } from '../blog-post';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-blog-list',
   standalone: true,
-  imports: [BlogPostTileComponent],
+  imports: [BlogPostTileComponent,CommonModule],
   templateUrl: './blog-list.component.html',
   styleUrl: './blog-list.component.scss'
 })
