@@ -14,6 +14,8 @@ export class BlogPostTileComponent {
 
 
   @Input() post:BlogPost = new BlogPost("","");
+  
+  fullSummary:string="";
  
 
   constructor(private truncatePipe:TruncatePipe){
@@ -21,7 +23,14 @@ export class BlogPostTileComponent {
   }
 
   ngOnInit(){
+    this.fullSummary=this.post.summary;
     this.post.summary=this.truncatePipe.transform(this.post.summary,15);
     
+    
+  }
+
+  showFullText(){
+    this.post.summary=this.fullSummary;
+
   }
 }
