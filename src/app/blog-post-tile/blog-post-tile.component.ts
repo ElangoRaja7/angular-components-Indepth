@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { BlogPost } from '../blog-post';
 
 @Component({
   selector: 'app-blog-post-tile',
@@ -10,8 +11,8 @@ import { Component, Input } from '@angular/core';
 export class BlogPostTileComponent {
 
 
-  @Input() title:string="";
-  @Input() summary:string="";
+  @Input() post:BlogPost = new BlogPost("","");
+ 
 
   constructor(){
 

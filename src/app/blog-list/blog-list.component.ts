@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BlogPostTileComponent } from '../blog-post-tile/blog-post-tile.component';
+import { BlogPost } from '../blog-post';
 
 @Component({
   selector: 'app-blog-list',
@@ -9,5 +10,16 @@ import { BlogPostTileComponent } from '../blog-post-tile/blog-post-tile.componen
   styleUrl: './blog-list.component.scss'
 })
 export class BlogListComponent {
+
+  posts:BlogPost[]=[];
+
+  ngOnInit(){
+
+    this.posts.push(new BlogPost("Blog Title 1","Summary 1"));
+    this.posts.push(new BlogPost("Blog Title 2","Summary 2"));
+    this.posts.push(new BlogPost("Blog Title 3","Summary 3"));
+    this.posts.push(new BlogPost("Blog Title 4","Summary 4"));
+    this.posts.push(new BlogPost("Blog Title 5","Summary 5"));
+  }
 
 }
