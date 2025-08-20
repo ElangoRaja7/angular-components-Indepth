@@ -17,7 +17,7 @@ export class BlogListComponent {
   ngOnInit(){
 
     this.posts.push(new BlogPost("Blog Title 1","Summary 1"));
-    this.posts.push(new BlogPost("Blog Title 2","Summary 2"));
+    this.posts.push(new BlogPost("Blog Title 2","Summary 2  shglsfjg sfgsdfg slsdfgjlk sdfgkl sdfgjksl dfgkjsdlfgk sdlfgjsdlfkgjsdfkg"));
     this.posts.push(new BlogPost("Blog Title 3","Summary 3"));
     this.posts.push(new BlogPost("Blog Title 4","Summary 4"));
     this.posts.push(new BlogPost("Blog Title 5","Summary 5"));
