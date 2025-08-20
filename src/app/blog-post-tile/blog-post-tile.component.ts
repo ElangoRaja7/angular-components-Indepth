@@ -9,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class BlogPostTileComponent {
 
+
+  title:string="";
+  summary:string="";
+
+  constructor(){
+
+  }
+
+  ngOnInit(){
+    this.title="Title";
+    this.summary="Blog Post's summary"
+  }
 }
