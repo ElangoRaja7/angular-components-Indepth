@@ -7,7 +7,8 @@ import { TruncatePipe } from '../truncate.pipe';
   standalone: true,
   imports: [TruncatePipe],
   templateUrl: './blog-post-tile.component.html',
-  styleUrl: './blog-post-tile.component.scss'
+  styleUrl: './blog-post-tile.component.scss',
+  providers:[TruncatePipe]
 })
 export class BlogPostTileComponent {
 
@@ -15,11 +16,12 @@ export class BlogPostTileComponent {
   @Input() post:BlogPost = new BlogPost("","");
  
 
-  constructor(){
+  constructor(private truncatePipe:TruncatePipe){
 
   }
 
   ngOnInit(){
+    this.post.summary=this.truncatePipe.transform(this.post.summary,15);
     
   }
 }
