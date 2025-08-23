@@ -1,8 +1,9 @@
-<div class="card">
+<div class="card" [ngClass]="{'fav':post.isFav}">
     <div class="card-body">
         <h5 class="card-title">{{post.title}}</h5>
         <p class="card-text" (click)="showFullText()">{{post.summary}}</p>
-        <a href="#" class="btn btn-primary">Read</a>
+        <a href="#" class="btn btn-primary">Read</a> 
+        <a href="#" class="btn btn-primary" (click)="toggleFav()">Fav</a>
     </div>
 
 

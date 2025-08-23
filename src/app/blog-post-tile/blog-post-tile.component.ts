@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input } from '@angular/core';
 import { BlogPost } from '../blog-post';
 import { TruncatePipe } from '../truncate.pipe';
+import { CommonModule } from '@angular/common';
 //import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-blog-post-tile',
   standalone: true,
-  imports: [TruncatePipe],
+  imports: [TruncatePipe,CommonModule],
   templateUrl: './blog-post-tile.component.html',
   styleUrl: './blog-post-tile.component.scss',
   providers:[TruncatePipe]
@@ -29,6 +30,7 @@ export class BlogPostTileComponent {
   ngOnInit(){
     this.fullSummary=this.post.summary;
     this.post.summary=this.truncatePipe.transform(this.post.summary,15);
+    this.post.isFav=false;
     
     
   }
@@ -37,8 +39,9 @@ export class BlogPostTileComponent {
     this.post.summary=this.fullSummary;
 
   }
-
-  updatePageNumber(){
-    
+  toggleFav(){
+    this.post.isFav=!this.post.isFav;
   }
+
+
 }
