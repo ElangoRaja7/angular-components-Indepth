@@ -1,4 +1,5 @@
 <app-blog-post-tile 
-*ngFor="let post of posts" 
+*ngFor="let post of posts[receivedPageNumber]" 
 [post]="post"></app-blog-post-tile>
 
+<app-paginator [numberOfPages]="posts.length" (updatePageEvent)="handlePageUpdateEvent($event)"></app-paginator>

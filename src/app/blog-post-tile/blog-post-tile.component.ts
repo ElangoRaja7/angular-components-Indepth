@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input } from '@angular/core';
 import { BlogPost } from '../blog-post';
 import { TruncatePipe } from '../truncate.pipe';
+//import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-blog-post-tile',
@@ -14,6 +15,9 @@ export class BlogPostTileComponent {
 
 
   @Input() post:BlogPost = new BlogPost("","");
+  @Input() numberOfPages: Number=0;
+
+  private pageEvent= new EventEmitter<Number>();
   
   fullSummary:string="";
  
@@ -32,5 +36,9 @@ export class BlogPostTileComponent {
   showFullText(){
     this.post.summary=this.fullSummary;
 
+  }
+
+  updatePageNumber(){
+    
   }
 }
