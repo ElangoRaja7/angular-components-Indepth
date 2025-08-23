@@ -1,0 +1,7 @@
+.scorller {
+  max-height: 500px; /* Or any fixed height you want */
+  overflow-y: scroll; /* This is the key property */
+  padding: 10px; /* Optional: for some spacing */
+  border: 1px solid #ccc; /* Optional: for visibility */
+  max-width: 500px;
+}
