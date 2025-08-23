@@ -3,13 +3,15 @@ import { BlogPostTileComponent } from '../blog-post-tile/blog-post-tile.componen
 import { BlogPost } from '../blog-post';
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from '../paginator/paginator.component';
+import { BlogPostDataService } from '../blog-post-data.service';
 
 @Component({
   selector: 'app-blog-list',
   standalone: true,
   imports: [BlogPostTileComponent, CommonModule, PaginatorComponent],
   templateUrl: './blog-list.component.html',
-  styleUrl: './blog-list.component.scss'
+  styleUrl: './blog-list.component.scss',
+  providers:[BlogPostDataService]
 })
 export class BlogListComponent {
 
@@ -17,46 +19,15 @@ export class BlogListComponent {
   numberOfPages : number=0;
   receivedPageNumber :number=0;
    @ViewChildren('tile') blogPostTile:QueryList<BlogPostTileComponent> | undefined;
-  
+  constructor(private blogData:BlogPostDataService){
+
+  }
 
   ngOnInit() {
    
 
-    this.posts =
-      [
-
-        [
-          new BlogPost("Blog Title 1", "Summary 1 from page 1"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 1"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 1"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 1")
-
-        ],
-        [
-          new BlogPost("Blog Title 1", "Summary 1 from page 2"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 2"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 2"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 2")
-
-        ],
-        [
-          new BlogPost("Blog Title 1", "Summary 1 from page 3"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 3"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 3"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 3")
-
-        ]
-        ,
-        [
-          new BlogPost("Blog Title 1", "Summary 1 from page 4"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 4"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 4"),
-          new BlogPost("Blog Title 1", "Summary 1 from page 4")
-
-        ]
-
-      ];
-
+    this.posts =this.blogData.getData();
+     
 
     }
     handlePageUpdateEvent(emittedPageNumber:number){
