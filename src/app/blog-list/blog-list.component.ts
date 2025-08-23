@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, viewChild } from '@angular/core';
 import { BlogPostTileComponent } from '../blog-post-tile/blog-post-tile.component';
 import { BlogPost } from '../blog-post';
 import { CommonModule } from '@angular/common';
@@ -16,6 +16,7 @@ export class BlogListComponent {
   posts: BlogPost[][] = [];
   numberOfPages : number=0;
   receivedPageNumber :number=0;
+   @ViewChild('tile') blogPostTile:BlogPostTileComponent | undefined;
   
 
   ngOnInit() {
@@ -63,6 +64,9 @@ export class BlogListComponent {
       console.log("Event caught from Parent and the value is : "+emittedPageNumber);
       this.receivedPageNumber=emittedPageNumber;
 
+    }
+    ExpandChild(){
+      this.blogPostTile!.showFullText();
     }
 
 }
