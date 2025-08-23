@@ -1,9 +1,9 @@
 <button class="btn btn-success" (click)="ExpandChild()">ExpandAll</button>
 <div class="scorller">
-<!-- <app-blog-post-tile 
+<app-blog-post-tile 
 *ngFor="let post of posts[receivedPageNumber]" 
-[post]="post"></app-blog-post-tile> -->
-<app-blog-post-tile [post]="posts[0][0]" #tile></app-blog-post-tile>
+[post]="post" #tile></app-blog-post-tile>
+<!-- <app-blog-post-tile [post]="posts[0][0]"></app-blog-post-tile> -->
 <app-paginator [numberOfPages]="posts.length" (updatePageEvent)="handlePageUpdateEvent($event)"></app-paginator>
 
 </div>

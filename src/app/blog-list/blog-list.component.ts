@@ -1,4 +1,4 @@
-import { Component, ViewChild, viewChild } from '@angular/core';
+import { Component, QueryList, ViewChild, viewChild, ViewChildren } from '@angular/core';
 import { BlogPostTileComponent } from '../blog-post-tile/blog-post-tile.component';
 import { BlogPost } from '../blog-post';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,7 @@ export class BlogListComponent {
   posts: BlogPost[][] = [];
   numberOfPages : number=0;
   receivedPageNumber :number=0;
-   @ViewChild('tile') blogPostTile:BlogPostTileComponent | undefined;
+   @ViewChildren('tile') blogPostTile:QueryList<BlogPostTileComponent> | undefined;
   
 
   ngOnInit() {
@@ -66,7 +66,9 @@ export class BlogListComponent {
 
     }
     ExpandChild(){
-      this.blogPostTile!.showFullText();
+      //this.blogPostTile!.showFullText();
+
+      this.blogPostTile?.forEach(e=>e.showFullText());
     }
 
 }
