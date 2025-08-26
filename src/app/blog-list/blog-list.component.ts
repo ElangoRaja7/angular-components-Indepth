@@ -1,4 +1,4 @@
-import { Component, QueryList, ViewChild, viewChild, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, QueryList, ViewChild, viewChild, ViewChildren } from '@angular/core';
 import { BlogPostTileComponent } from '../blog-post-tile/blog-post-tile.component';
 import { BlogPost } from '../blog-post';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,8 @@ import { BlogPostDataService } from '../blog-post-data.service';
   imports: [BlogPostTileComponent, CommonModule, PaginatorComponent],
   templateUrl: './blog-list.component.html',
   styleUrl: './blog-list.component.scss',
-  providers: [BlogPostDataService]
+  providers: [BlogPostDataService],
+  changeDetection:ChangeDetectionStrategy.Default
 })
 export class BlogListComponent {
 
@@ -44,7 +45,11 @@ export class BlogListComponent {
   favAll(){
     console.log("FavAll is called")
     //this.blogPostTile?.forEach(e=>e.isFav=true);
-    this.posts[this.receivedPageNumber].forEach(e=>e.isFav=true);
+    this.posts[this.receivedPageNumber].
+    map(e=>{
+      new BlogPost(e.title,e.summary);
+      e.isFav=true;
+    })
   }
 
 }
