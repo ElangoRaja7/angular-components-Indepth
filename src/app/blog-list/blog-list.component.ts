@@ -12,7 +12,7 @@ import { BlogPostDataService } from '../blog-post-data.service';
   templateUrl: './blog-list.component.html',
   styleUrl: './blog-list.component.scss',
   providers: [BlogPostDataService],
-  changeDetection:ChangeDetectionStrategy.Default
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class BlogListComponent {
 
