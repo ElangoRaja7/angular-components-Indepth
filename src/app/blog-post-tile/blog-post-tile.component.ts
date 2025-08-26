@@ -2,12 +2,13 @@ import { Component, EventEmitter, Input } from '@angular/core';
 import { BlogPost } from '../blog-post';
 import { TruncatePipe } from '../truncate.pipe';
 import { CommonModule } from '@angular/common';
+import { HighlightDirective } from '../highlight.directive';
 //import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-blog-post-tile',
   standalone: true,
-  imports: [TruncatePipe,CommonModule],
+  imports: [TruncatePipe,CommonModule,HighlightDirective],
   templateUrl: './blog-post-tile.component.html',
   styleUrl: './blog-post-tile.component.scss',
   providers:[TruncatePipe]
