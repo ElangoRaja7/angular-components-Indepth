@@ -11,35 +11,40 @@ import { BlogPostDataService } from '../blog-post-data.service';
   imports: [BlogPostTileComponent, CommonModule, PaginatorComponent],
   templateUrl: './blog-list.component.html',
   styleUrl: './blog-list.component.scss',
-  providers:[BlogPostDataService]
+  providers: [BlogPostDataService]
 })
 export class BlogListComponent {
 
   posts: BlogPost[][] = [];
-  numberOfPages : number=0;
-  receivedPageNumber :number=0;
-   @ViewChildren('tile') blogPostTile:QueryList<BlogPostTileComponent> | undefined;
-  constructor(private blogData:BlogPostDataService){
+  numberOfPages: number = 0;
+  receivedPageNumber: number = 0;
+  @ViewChildren('tile') blogPostTile: QueryList<BlogPostTileComponent> | undefined;
+  constructor(private blogData: BlogPostDataService) {
 
   }
 
   ngOnInit() {
-   
 
-    this.posts =this.blogData.getData();
-     
 
-    }
-    handlePageUpdateEvent(emittedPageNumber:number){
+    this.posts = this.blogData.getData();
 
-      console.log("Event caught from Parent and the value is : "+emittedPageNumber);
-      this.receivedPageNumber=emittedPageNumber;
 
-    }
-    ExpandChild(){
-      //this.blogPostTile!.showFullText();
+  }
+  handlePageUpdateEvent(emittedPageNumber: number) {
 
-      this.blogPostTile?.forEach(e=>e.showFullText());
-    }
+    console.log("Event caught from Parent and the value is : " + emittedPageNumber);
+    this.receivedPageNumber = emittedPageNumber;
+
+  }
+  ExpandChild() {
+    //this.blogPostTile!.showFullText();
+
+    this.blogPostTile?.forEach(e => e.showFullText());
+  }
+  favAll(){
+    console.log("FavAll is called")
+    //this.blogPostTile?.forEach(e=>e.isFav=true);
+    this.posts[this.receivedPageNumber].forEach(e=>e.isFav=true);
+  }
 
 }

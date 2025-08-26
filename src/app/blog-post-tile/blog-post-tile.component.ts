@@ -21,7 +21,7 @@ export class BlogPostTileComponent {
   private pageEvent= new EventEmitter<Number>();
   
   fullSummary:string="";
- 
+  isFav?:boolean;
 
   constructor(private truncatePipe:TruncatePipe){
 
