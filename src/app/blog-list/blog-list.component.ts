@@ -4,11 +4,12 @@ import { BlogPost } from '../blog-post';
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { BlogPostDataService } from '../blog-post-data.service';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-blog-list',
   standalone: true,
-  imports: [BlogPostTileComponent, CommonModule, PaginatorComponent],
+  imports: [BlogPostTileComponent, CommonModule, PaginatorComponent,CardComponent],
   templateUrl: './blog-list.component.html',
   styleUrl: './blog-list.component.scss',
   providers: [BlogPostDataService],
