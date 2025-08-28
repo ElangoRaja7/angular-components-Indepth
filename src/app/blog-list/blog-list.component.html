@@ -1,20 +1,26 @@
-<app-card>
-<p>
-<button class="btn btn-success" (click)="ExpandChild()">ExpandAll</button>
-</p>
-<p>
-    <button class="btn btn-success" (click)="favAll()">FavAll</button>
-</p>
-</app-card>
-<app-card>
-    <h2> from the List</h2>
-    <p>from the List para</p>
-</app-card>
-<div class="scorller">
-<app-blog-post-tile 
-*ngFor="let post of posts[receivedPageNumber]" 
-[post]="post" #tile></app-blog-post-tile>
-<!-- <app-blog-post-tile [post]="posts[0][0]"></app-blog-post-tile> -->
-<app-paginator [numberOfPages]="posts.length" (updatePageEvent)="handlePageUpdateEvent($event)"></app-paginator>
+<div slot="header">
+    <h1>Angular Blog</h1>
+</div>
+<div slot="body">
+    <app-card>
+        <p>
+            <button class="btn btn-success" (click)="ExpandChild()">ExpandAll</button>
+        </p>
+        <p>
+            <button class="btn btn-success" (click)="favAll()">FavAll</button>
+        </p>
+    </app-card>
+    <app-card>
+        <h2> from the List</h2>
+        <p>from the List para</p>
+    </app-card>
+    <div class="scorller">
+        <app-blog-post-tile *ngFor="let post of posts[receivedPageNumber]" [post]="post" #tile></app-blog-post-tile>
+        <!-- <app-blog-post-tile [post]="posts[0][0]"></app-blog-post-tile> -->
+        <app-paginator [numberOfPages]="posts.length" (updatePageEvent)="handlePageUpdateEvent($event)"></app-paginator>
 
+    </div>
+</div>
+<div slot="footer">
+    Footer
 </div>
